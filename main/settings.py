@@ -1,6 +1,4 @@
 from pathlib import Path
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
@@ -14,17 +12,11 @@ load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-# ALLOWED_HOSTS = ['localhost:5173', '127.0.0.1:5173', '127.0.0.1:8000', '127.0.0.1', 'localhost']
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 # ALLOWED_HOSTS = ['*']
-# ALLOWED_HOSTS = ['delicate-dragon-8d3d78.netlify.app']
-
-
-
 
 # Application definition
 
@@ -43,8 +35,7 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '').split(',')
-CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') if origin]
-
+CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') 
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -86,7 +77,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 ASGI_APPLICATION = 'main.asgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
